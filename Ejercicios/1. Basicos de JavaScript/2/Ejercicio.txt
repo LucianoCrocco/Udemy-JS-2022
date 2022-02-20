@@ -1,0 +1,2 @@
+Solicita un nombre, la edad y muestra por consola el mensaje "Hola _, tienes _ años y el año que viene tendras _ años"
+Relizar el ejercicio con prompt(mensaje) y haz uso de los templeta strings

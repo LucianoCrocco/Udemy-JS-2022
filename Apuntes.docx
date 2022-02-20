@@ -1,0 +1,175 @@
+          1. Introducción a JavaScript
+
+Anotación: Hay prácticas que no realicé al ser temas que ya sé y no me hacen falta repasar.
+Vincular JS con HTML: https://www.w3schools.com/tags/att_script_src.asp
+
+    1. Sintaxis de JavaScript
+
+Es case senstitive
+Es de tipado debil/dinamico: Las variables son del tipo de dato que almacenan.
+Las sentencias finalizan con ;. No es obligatorio pero es muy recomendable.
+Los bloques finalizan con la lave de cierre '}'. De forma opcional se puyede añadir un ; despues de la llave.
+
+    2. Variables y constantes scope o ámbito
+
+Una variable es un espacio que reservamos en memoria para almacenar un dato que podrá cambiar durante la ejecución de nuestro programa.
+    La palabra reservada es "let", no es recomendable usar "var".
+Las variables se pueden: declarar, inicializar y modificar.
+Una constante es un espacio que reservamos en memoria para almacenar un dato que no cambiará durante la ejecución de nuestro programa.
+    La palabra reservada para declarar constantes es "const".
+El scope o ámbito es la zona donde existe nuestra variable o constante.
+
+    3. Declaración, inicialización y Modificación
+
+Una variable se declara con la siguiente estructura:
+    let nombre;
+Una variable se inicializa con la siguiente estructura:
+    numero = 5;
+Se puede declarar e inicializar en la misma sentencia:
+    let numero = 5;
+Para modificar el valro de una variable existente:
+    numero = 3;
+Las constantes solo admiten la declaración e inicialización en la misma sentencia. Se modifica unicamente en su declaración.
+    const PI = 3.14;
+
+    4. Tipos de datos principales en JavaScript
+
+Primitivos.
+    Numeros -> let numero = 5;
+    Strings (cadenas) -> let palabra = "hola"; let palabra = 'hola';
+    Boolean -> let respuesta = true; let respuesta = false;
+    Undefined.
+    Null.
+    Symbol.
+
+    5. Tipos de operadores
+
+Matématicos
+    Suma/Concatenación: +.
+    Resta: -.
+    Multiplicación: *.
+    División: /.
+    Módulo: %.
+Asignación
+    Asignación: =.
+    Suma y asignación: +=.
+    Resta y asignación: -=.
+    Multiplicación y asignación: *=.
+    División y asignación: /=.
+    Módulo y asignación: %=.
+Incremento/Decremento
+    Post-incremento en 1: x++.
+    Pre-incremento en 1: ++x.
+    Post-decremento en 1: x--.
+    Pre-decremento en 1: --x.
+Operadores Lógicos
+    Igualdad: ==.
+    Desigualdad: !=.
+    Estrictamente iguales: ===. (Mismo valor y mismo tipo).
+    Estrictamente desiguales: !==. (Mismo valor y mismo tipo).
+    Mayor que: >.
+    Menor que: <.
+    Mayor o igual que: >.
+    Menor o igual que: <.
+
+    6. Strings
+
+Método: Es todo aquello que la cadena puede hacer. Ej: Convertirse en mayúsculas.
+Propiedad: Son caracteristicas que al cadena tiene por ser una cadena. Ej: Longitud.
+Se cumplen utilizando la siguiente nomenclatura, al igual que con todos los objetos:
+    string.método().
+    string.propiedad.
+Documentación de métodos y propiedades: https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/String
+Los template string se engloban dentro de los caracteres ``, dentro funciona de igual manera que en C#.
+ 
+    7. Objeto Math
+
+Documentación de Math: https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Math
+El objeto Math se utiliza para hacer operaciones matemáticas complejas/específicas.
+Al ser un objeto también utiliza la nomenclatura del punto.
+
+    8. Condicionales
+
+El flujo de un programa siempre será de arriba hacia abajo.
+Estructurasn de control de flujo:
+    Condicionales
+        Simples
+        Compuestos
+        Múltiples
+    Bucles
+        Determinados
+        Indeterminados
+
+La estructura switch tiene una sintaxis múltiple, es decir, puedo tener muchos case sin break, se van a ejecutar todos hasta encontrar un break o terminar con el programa.
+Ejemplo encadenado:
+    let num = 1;
+    switch(num){
+        case 1:
+            num++;
+        case 2:
+            num++;
+        case 3:
+            num++;
+        case 4:
+            num++;
+        case 5:
+            num++;
+    }
+    console.log(num); -> Será 6.
+
+Ejemplo sin encadenar
+    let num = 1;
+    switch(num){
+        case 1:
+        case 3:
+        case 5:
+            console.log("es impar");
+            break;
+        case 2:
+        case 4:
+            console.log("es par");
+            break;
+    }
+
+    9. Operador ternario
+
+Se utiliza cuando una condición será true o false, al igual que el if.
+Su ejecución puede tener una ovarias sentencias, en este caso irán separadas por coma y entre paréntesis. Puede tener sentencias compuestas
+    Condición ? (true) : (false) 
+    Condición ? ((true, true) : (false, false))
+    Ejemplo: (2 % 2 === 0) ? console.log("Es par") : console.log("Es impar")
+
+    10. Arrays
+ 
+Documentación de Array: https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array
+Son estructuras que nos permiten almacenar varios datos y agruparlos.
+Se pueden llenar con cualquier tipo de dato válido en JavaScript y deben ir separados por comas.
+Se pueden mezclar tipos de datos en un mismo array, pero no es recomendable.
+Se declaran con llaves cuadradas o corchetes.
+Pueden declararse vacios o con contenido ya establecido.
+Pueden añadirse o eliminarse elementos en el momento que queramos (Funcionan como listas).
+Cada uno de los elementos podrá ser identificado por su índice, es decir por su posición.
+Los índices empiezan a contar desde el 0.
+Ejemplos de declaración:
+    let numeros = [];
+    let numeros = [x, z, y, b, ...];
+    let numeros = new Array();
+
+    11. Bucles
+Se usan cuando queremos que un trozo de código se repita.
+Existen bucles determinados e indeterminados.
+Los determinados se usan cuando especificamos el número de veces que se va a repetir.
+    Ej: Imprimir números del 1 al 10.
+Los indeterminados los utilizamos cuando no sabemos el número de veces que se va a repetir.
+    Ej: Repetir mensaje de introducir contraseña.
+La estructura de un bucle es siempre la misma.
+    Ej: Bucle { Código a ejecutar }.
+En EMASCRIPT 6 llegaron los bucles for in y for of.
+    La palabra of devolverá el valor del elemento en el array.
+    La palabra in devolverá el index del elemento en el array. Podemos sacar el contenido como por ejemplo: array[variable_local]; (Como en C).
+
+
+
+        2. Objetos, funciones y métodos
+    
+    1.
