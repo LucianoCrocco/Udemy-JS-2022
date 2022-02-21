@@ -1,0 +1,1 @@
+Solicita un número e imprime todos los números pares e impares desde 1 hasta el número ingresado con el mensaje "es par" - "es impar". 

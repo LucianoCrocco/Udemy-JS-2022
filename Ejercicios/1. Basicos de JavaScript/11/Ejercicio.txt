@@ -1,0 +1,1 @@
+Dado un array que contiene ["azul", "amarillo", "rojo", "verde", "rosa"] determinar si un color introducido por el usuario a traves de un prompt se encuentra dentro del array o no.

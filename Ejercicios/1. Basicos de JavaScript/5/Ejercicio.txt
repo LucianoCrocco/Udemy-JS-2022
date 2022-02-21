@@ -1,0 +1,1 @@
+Escribe un programa que pida numeros enteros mayor que 1 y que escriba si el número es primo o no.

@@ -1,0 +1,1 @@
+Escribe un programa que permite ir introduciendo una serie indeterminable de números mientras su suma no supere 50. Cuando esto ocurra, se debe mostrar el total acumulado y el contador de cuantos números se han introducido.

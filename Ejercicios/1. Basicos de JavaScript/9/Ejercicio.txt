@@ -1,0 +1,1 @@
+Dado un array de letras, solicita un número de DNI y calcular que letra le corresponde. El número no puede ser negativo ni tener más de 8 digitos. La posición de la letras es el resultado del módulo del número introducido entre 23.
