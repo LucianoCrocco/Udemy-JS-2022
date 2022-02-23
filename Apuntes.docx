@@ -172,4 +172,44 @@ En EMASCRIPT 6 llegaron los bucles for in y for of.
 
         2. Objetos, funciones y métodos
     
-    1.
+    1. Objetos introducción
+
+Son estructuras de datos que representan propiedades, valores y acciones que puede realizar el objeto.
+Todos los objetos tiene propiedades o atributos y comportamientoes o acciones representados por pares key:value.
+Para acceder a las propiedades y acciones del objeto se utiliza la nomeclatura del punto. Otra forma es: objeto['atributo'].
+
+    2. Funciones introducción
+
+Son fragmentos de código que escribimos para ejectuar una tarea y no volver a escribir el mismo código más de una vez.
+Nos ayuda a modularizar el código.
+Las funciones deben realizar una sola tarea.
+La sintaxis puede ser:
+    function NOMBRE () {CODIGO A EJECUTAR};
+    const NOMBRE = () => {CODIGO A EJECUTAR};
+Pueden recibir parámetros.
+Pueden devolver valores.
+Con la palabra return devolvemos un valor.
+En la funcion const al utilizar lamba existe un return implicito si hay una única instrucción, también se pueden obviar las llaves. En caso de tener mas de una linea se utiliza return.
+    Ejemplo: const NOMBRE = (p1, p2) => p1 + p2; -> Return implicito
+
+    3. Programación Orienteada a Objetos - Clases
+
+Es un paradigma de la programación. Un paradigma es una forma de resolver un problema.
+Algunos de los conceptos fundamentales son:
+    Clase
+    Herencia
+    Objeto
+    Método
+    Evento
+    Etc
+Las clases necesitan una función constructora. Se tiene que llamar al constructor y se ejecuta cuando creemos un objeto (Desconozco si hay una clase por defecto que inicializa todo en 0 en caso de no haber constructor como en .NET).
+La sintaxis es:
+    class NOMBRE_DE_LA_CASE{
+        constructor(PARAMETROS){
+            this.ATRIBUTO
+        }
+    }
+Los objetos pueden tener funciones asociadas a él. En ese caso se lo denomina 'Métodos'.
+Para crear un objeto utilizando la clase se hace con la palabra reservada new y el nombre de la clase que queremos utilizar.
+Una vez INSTANCIADO el objeto podremos acceder a sus propiedades y métodos utilizando la nomeclatura del punto o buscando su propiedad en el objeto.
+Existen los getter y setters para acceder a los atributos a través de las propiedades get y set.
