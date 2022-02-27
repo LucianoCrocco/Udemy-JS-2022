@@ -213,3 +213,66 @@ Los objetos pueden tener funciones asociadas a él. En ese caso se lo denomina '
 Para crear un objeto utilizando la clase se hace con la palabra reservada new y el nombre de la clase que queremos utilizar.
 Una vez INSTANCIADO el objeto podremos acceder a sus propiedades y métodos utilizando la nomeclatura del punto o buscando su propiedad en el objeto.
 Existen los getter y setters para acceder a los atributos a través de las propiedades get y set.
+
+    4. Spread Operator
+
+El spread operator u operador de expansión principalmente expande el contenido de un array. Se podría decir que devuelve el valor de cada index por separado.
+Utiliza ... para al comienzo para indicar que es un Spread Operator.
+Nos permite que una función pueda recibir una cantidad indefinida de parametros con el concepto Rest parameters: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters
+Por ejemplo:
+    const numbers = [12, 2, 3, 23, 43, 2, 3];
+    console.log(...numbers); | OutPut => 12 2 3 23 43 2 3
+
+
+
+        3. DOM Document Object Model    
+    
+    1. DOM - Introducción
+
+Documentación: https://www.w3schools.com/js/js_htmldom.asp
+Se considera DOM toda la estructura HTML de un documento.
+No es JavaScript, es una API (Application Programing Interface) que se utiliza a través de JavaScript que viene integrado con el navegador.
+El DOM establece una jerarquia a través de nodos, constituyendo algo parecido a un arbol inverso.
+Cada parte del arbol del documento es un NODO.
+Hay varios tipos de nodos, los más utilizados son:
+    Element node - 1 (Cualquier etiqueta HTML).
+    Text node - 3 (El contenido de la etiqueta HTML).
+    Comment node - 8 (Cualquier comentario en HTML).
+Para vincular JavaScript con HTML utilizamos la etiqueta <script src"PATH"></script>. Se recomienda colocarla la linea anterior al cierre del body para que el script pueda acceder a todos los elementos declarados.
+
+    2. Selección de elementos
+
+Los elementos se guardan en una constante porque el elemento no van a cambiar.
+Los pseudo-elementos no existen en el DOM, sin embargo hay formas de acceder a ellos que veremos más adelante.
+document.getElementById("ID") - Acceder a un elemento a través de su id.
+document/element.querySelector("SelectorCSS") - Accede al primer elemento que coincida con el selector CSS.
+document/element.querySelectorAll("SelectorCSS") - Accede a todos los elementos que coincidan con el selector CSS, devuelve un nodeList.
+Para los selectores CSS utilizamos el . al principio para indicar que es una clase.
+
+    3. Atributos y clases
+Atributos
+    element.getAttribute("attribute"); | -> Nos devuelve el valor del atributo del elemento.
+    element.setAttribute("attribute", value); -> Nos permite cambiar el valor del atributo del elemento.
+Clases
+    element.classList.add("class", "class", ...); | -> Añadimos una o más clases.
+    element.classList.remove("class", "class", ...); | -> Remueve una o más clases.
+    element.classList.toggle("class" [,force]); | -> Deshabilita o habilita una clase. Toggle devuelve true si contiene esa clase, en caso de contenerla no añade la clase especificada en el force y viceversa con el false.
+    element.classList.contains("class"); | -> Devuelve true o false en función si tiene la clase o no.
+    element.classList.replace("oldclase", "newclass"); | -> Sustituye la clase del primer parametro por la del segundo.
+Atributos directos más importantes
+    id
+    value
+
+    4. Eventos de ratón y teclado
+
+
+
+    5. Objeto evento
+
+    6. Crear e instanciar elementos
+
+    7. DOM traversing
+
+    8. Insertar, clonar y borrar elementos
+
+    9. Objetos nativos y timers
