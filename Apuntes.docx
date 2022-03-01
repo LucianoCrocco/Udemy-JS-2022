@@ -227,6 +227,8 @@ Por ejemplo:
 
         3. DOM Document Object Model    
     
+            PEGAR FOTO ARBOL DOM
+
     1. DOM - Introducción
 
 Documentación: https://www.w3schools.com/js/js_htmldom.asp
@@ -252,7 +254,7 @@ Para los selectores CSS utilizamos el . al principio para indicar que es una cla
     3. Atributos y clases
 Atributos
     element.getAttribute("attribute"); | -> Nos devuelve el valor del atributo del elemento.
-    element.setAttribute("attribute", value); -> Nos permite cambiar el valor del atributo del elemento.
+    element.setAttribute("attribute", value); -> Nos permite cambiar el valor del atributo del elemento. Tambien podemos setear el valor de un atributo que no haya sido declarado en la etiqueta en un comienzo. Ej: element.setAttribute("placeholder", "Ingrese su nombre");
 Clases
     element.classList.add("class", "class", ...); | -> Añadimos una o más clases.
     element.classList.remove("class", "class", ...); | -> Remueve una o más clases.
@@ -265,14 +267,44 @@ Atributos directos más importantes
 
     4. Eventos de ratón y teclado
 
-
+Documentación: https://developer.mozilla.org/es/docs/Web/Events
+Un evento es cualquer cosa que sucede en nuestro documento. Puede ejecutarlo un usuario o la misma programación de la página.
+La sintaxis correcta para el mantenimiento y lectura de una página web sería: Element.addEventosListener('event', callback);
+El callback es una función anonima que se ejecuta cuando se dispara el evento.
 
     5. Objeto evento
 
+El objeto evento vive siempre y cuando haya un evento.
+Ejemplo del objeto evento: input.addEventListener("keyup", (e) => console.log(e));
+El objeto evento nos permite saber donde hicimos click. Por ejemplo si tenemos un div dentor de otro div, podemos saber donde se hizo click y a que objeto interno afecto. Ejemplo en el ejercicio 4 del curso-
+Los eventos los podemos escuchar (addEventListener) y también los podemos forzar. Para forzarlos simplemente utilziamos la sintaxis element.evento(). 
+Podemos evitar el comportamiento por default de los eventos utilizando .preventDefault(). Esto puede ser muy util para bloquear el envio de un formulario al hacer click en un boton de "Enviar".
+
     6. Crear e instanciar elementos
 
-    7. DOM traversing
+Crear un elemento: document.createElement(element)
+Escribir texto en un elemento: element.textContent = texto
+Escribir HTML en un elemento: element.innerHTML = código HTML
+
+Añadir un elemento al DOM: parent.appendchild(element);
+
+Añadir fragmentos de código: document.createDocumentFragment();
+
+Ejemplos prácticos y buenas prácticas en el ejercicio correspondiente. Son algunas formas (malas y buenas) de añadir HTML (que también añade un nodo a la jerarquia) con JavaScript.
+
+    7. DOM - Recorrerlo (DOM Traversing)
+
+
 
     8. Insertar, clonar y borrar elementos
 
     9. Objetos nativos y timers
+
+    8.    Shortcuts
+
+Pagina: https://medium.com/@ashley.karhoff1/emmet-shortcuts-to-quickly-generate-html-tags-and-css-classes-aeb04cd48aec
+Shortcut para crear varios elementos HTML duplicados: element{EJEMPLO-$}*CANTIDAD -> Las {} son opcionales, el $ da comienzo a partir del 1. Es posible combinarlo al final con el "." o el "#".
+Para anidar elementos utilizamos el simbolo ">": Ejemplo: nav>ul>li*4>a
+Añadir un div (por defecto) con una clase: ."nombreClase" -> Poniendo puntos añado mas clases
+Añadir un div (por defecto) con un id y una clase (opcional): #"nombreId"."nombreClase" -> Poniendo puntos añado mas clases
+
