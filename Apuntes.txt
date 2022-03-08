@@ -416,7 +416,71 @@ Timers - Los timers nos permiten establecer que una función se ejecuta despues 
 
         4. Peticiones HTTP 
 
-    1. Objeto XMLHTTPRequest 
+    AJAX
+
+AJAX, acrónimo de Asynchronous JavaScript And XML, es una técnica de desarrollo web para crear aplicaciones web asíncronas. Estas aplicaciones se ejecutan en el cliente, es decir, en el navegador de los usuarios mientras se mantiene la comunicación asíncrona con el servidor en segundo plano.
+
+                FOTO ASYNC VS SYNC
+
+    Pequeña definición de AJAX
+¿Cómo funciona la Web? Nosotros hacemos una petición a través del protocolo HTTP a un dominio, solicitando a un servidor o una nube esa cierta información. Ese servidor nos devuelve esa información como página web, que esta compuesta por HTML, CSS, JS, imagenes, video, etc. Así es como funcionan todas las webs que no utilizan AJAX.
+Cuando nosotros utilizamos AJAX lo que estamos haciendo es interceptar esa respuesta para evitar que la pagina se recarge. De esta forma lo que hacemos es, en lugar de solicitar todos los datos, hacemos la petición a través del protocolo HTTP pero solo solicitamos ciertos datos, y esos datos cuando llegan lo que hacemos es guardarlos en un objeto. Entonces de esta forma obtenemos los datos del servidor pero no recargamos la pagina porque no estamos cargando esos datos en el navegador, los tenemos en un objeto y una vez que esta ahi trabajamos con ese objeto de la forma que necesitemos.
+
+Las peticiones a una API se ven normalmente como objetos construidos en formato JSON.
+
+    API
+
+https://www.redhat.com/es/topics/api/what-are-application-programming-interfaces
+Una API o interfaz de programación de aplicaciones es un conjunto de definiciones y protocolos que se usa para diseñar e integrar el software de las aplicaciones.
+Las API permiten que sus productos y servicios se comuniquen con otros, sin necesidad de saber cómo están implementados. Esto simplifica el desarrollo de las aplicaciones y permite ahorrar tiempo y dinero. Las API le otorgan flexibilidad; simplifican el diseño, la administración y el uso de las aplicaciones; y ofrecen oportunidades de innovación, lo cual es ideal al momento de diseñar herramientas y productos nuevos (o de gestionar los actuales).
+
+
+En este curso no veremos AJAX con JQuery al ser una libreria pesada y obsoleta. Veremos como hacer peticiones sin JQuery y que sean compatibles con computadoras antiguas.
+
+Normalmente las peticiones a los servidores se hacen a través de PHP, es la forma más común. Hoy por hoy node esta comiendo parte del mercado, sin embargo PHP sigue siendo la principal.
+Vamos a utilizar la API https://jsonplaceholder.typicode.com para realizar peticiones y peticiones AJAX, ademas de montar un pequeño servidor PHP (WampServer). 
+
+
+    1. Objeto XMLHTTPRequest -> Reveer mas adelante. Al finalizar el curso. No termine de entender el concepto.
+
+Para guardar una peticion por convencion utilizamos el nombre xhr para guardar el objeto XMLHttpRequest.
+Para saber si un navegador soporte un objeto XMLHTTPRequest simplemente preguntamos en un if si exisite el objeto en la clase window. Si existe asignamos la variable xhr a un new de XMLHttpRequest(), de lo contrario utilizamos el objeto ActiveXObject("Microsoft.XMLHTTP");
+De esta manera nos ahorramos todo jQuery.
+
+Para establecer una conexión y recibir información utilizamos el metodo open de nuestra variable donde asignamos la creación del objeto correspondiente, en su primer parametro pasamos el metodo HTML a utilizar (GET, POST, PUT, DELETE). En caso de utilizar GET indicamos la URL/codigo del lugar a consultar en su segundo parametro. Si hacemos una peticion por POST el segundo parametro lo ocupara un objeto con toda la información (veremos mas adelante peticiones POST).
+Ejemplo GET recibiendo información:
+    xhr.open("GET", "https://jsonplaceholder.typicode.com/users"); | Si queremos enviar información simplemente ponemos un objeto/direccion/variable en el segundo parametro.
+
+Siempre debemos verificar que esa información haya terminado de ser recibida (termino ese hilo asincronico), para ello vamos a utilizar un evento load. Despues indicamos en el metodo anonimo que hacer con esa información. Para enviar información en teoria no necesitamos de este paso.
+Ejemplo evento load para verificar que termino el hilo asincronico:
+    xhr.open("GET", "https://jsonplaceholder.typicode.com/users");
+    xhr.addEventListener("load", (data) => { 
+        const dataJSON = JSON.parse(data.target.response);
+        const list = document.getElementById("list");
+        for(let userInfo of dataJSON){
+            const listItem = document.createElement("li");
+            listItem.textContent = `${userInfo.id} - ${userInfo.name}`
+            list.appendChild(listItem);
+        }
+    });
+
+Con el metodo send enviaremos esa conexión/información.
+https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/send
+https://www.w3schools.com/xml/ajax_xmlhttprequest_send.asp
+xhr.send(INFO);
+
+
+Para enviar información con POST debemos crear un objeto del tipo formData(Informacion a enviar);
+Ejemplo con POST
+    xhr.open('POST', 'marvel.php);
+    const formData = new formData(data);
+    xhr.send(formData);
+
+    2. Callbacks
+
+Un callback es una función que se ejecuta a través de una función. Los callbacks se volvieron obsoletos y se empezaron a utilizar las promesas.
+
+
 
         8.    Shortcuts
 
