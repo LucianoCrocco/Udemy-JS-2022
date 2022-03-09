@@ -13,8 +13,10 @@ button.addEventListener("click", () => {
         xhr = new ActiveXObject("Microsoft.XMLHTTP");
     }
 
+    
     xhr.open("GET", "https://jsonplaceholder.typicode.com/users");
     
+
     xhr.addEventListener("load", (data) => { // Con load sabemos que la petición a terminado. Despues indicamos en el metodo anonimo que hacer con esa información.
         const dataJSON = JSON.parse(data.target.response);
         
@@ -27,4 +29,11 @@ button.addEventListener("click", () => {
 
     }); 
 
+    // xhr.addEventListener("load", eventoManejador);
+
+    xhr.send();
 });
+
+// function eventoManejador(e){
+//     console.log(e);
+// }
