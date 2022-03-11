@@ -445,12 +445,15 @@ Vamos a utilizar la API https://jsonplaceholder.typicode.com para realizar petic
 
     1. Objeto XMLHTTPRequest
 
-Para guardar una peticion por convencion utilizamos el nombre xhr para guardar el objeto XMLHttpRequest.
+Para guardar/lanzar una peticion por convencion utilizamos el nombre xhr para guardar el objeto XMLHttpRequest.
 Para saber si un navegador soporte un objeto XMLHttpRequest simplemente preguntamos en un if si exisite el objeto en la clase window. Si existe asignamos la variable xhr a un new de XMLHttpRequest(), de lo contrario utilizamos el objeto ActiveXObject("Microsoft.XMLHTTP");
 De esta manera nos ahorramos todo jQuery.
 
 La variable en la cual guardamos el objeto XMLHttpRequest/ActiveXObject("Microsoft.XMLHTTP"); tiene un metodo llamado open(). Este metodo recibe en su primer parametro el metodo que vamos a utilizar para hacer la peticion (puede ser GET, POST, PUT, DELETE), y en su segundo parametro el link interno u externo al cual queremos hacer la conexion para la peticion.
 Aclaracion: Si se hace a través de GET los codigos/parametros (por ejemplo los que aparecen en un metodo GET de formularios o el ejemplo) a acceder hay que ponerlos en la URL a al que hacemos la peticion. En cambio por POST tendriamos que crear un objeto donde vamos a guardar esa información.
+Podemos hacer peticiones para enviar datos a un lugar o recibir datos de ese lugar. Por ejemplo un GET a un JSON como esta ahi debajo, enviar datos en JSON a una pagina o cargar datos a una DB.
+
+Ejemplo del metodo POST en la carpeta "1.3 Objeto XMLHTTPRequest 3"
 
 Ejemplo accediendo a una ruta externa:
     xhr.open("GET", "https://jsonplaceholder.typicode.com/users");
@@ -471,16 +474,13 @@ Ejemplo parseando del JSON recibido solamente el ID y nombre:
         }
     }); 
 
-    1.2 Objeto XMLHTTPRequest 2
-
-
 
 
     2. Callbacks
 
-Un callback es una función que se ejecuta a través de una función. Los callbacks se volvieron obsoletos y se empezaron a utilizar las promesas.
+Un callback es una función que se ejecuta a través de una función. Los callbacks se volvieron obsoletos ya que son dificiles de mantener y se empezaron a utilizar las promesas. Los callbacks no son asincronos.
 
-
+    3. Promesas
 
         8.    Shortcuts
 

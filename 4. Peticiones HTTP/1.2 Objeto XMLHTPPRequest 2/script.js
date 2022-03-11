@@ -2,9 +2,11 @@ const form = document.getElementById('form')
 const characters = document.getElementById('characters')
 const table = document.getElementById('table')
 
+
 form.addEventListener('submit', (e) => {
     e.preventDefault()
-    getData(characters.children[characters.selectedIndex].value)
+    getData(characters.children[characters.selectedIndex].value);
+    //getData(characters.selectedIndex+1);//Alternativa para acceder al ID que es +1 del index en la DB
 })
 
 const getData = (id) => {
@@ -70,5 +72,3 @@ const getData = (id) => {
 
     xhr.send()
 }
-
-getData()
