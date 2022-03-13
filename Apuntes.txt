@@ -482,6 +482,32 @@ Un callback es una función que se ejecuta a través de una función. Los callba
 
     3. Promesas
 
+Documentación: https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Using_promises
+Una promesa es un objeto que dentro tiene dos callbacks. Es un objeto que representa la terminación o el fracaso de una operación asíncrona.
+
+ Otra definicion
+En promesas utilizamos funciones de tipo callback.
+Una promesa básicamente es código que tiene varios estados, así que vamos a poder lanzar una petición 
+para procesar un código. En dado caso que la promesa se resuelta correctamente se resuelve el codigo y en 
+caso que haya tenido problemas se manda a llamar el error.
+Por lo tanto podemos decir que existen dos caminos: Un en el que se ejecuto el codigo correctamente y se 
+resolvio el mismo y otro en el cual falla el codigo y se manda a llamar el error en el catch.
+Mientras la promesa no haya terminado de ejecutar el codigo se encuentra en estado de pendiente. Una 
+vez ejecutado el codigo si se puede resolver utilizamos la funcion .then(), en caso de que no se haya podido 
+procesar utilizaremos la funcion .catch().
+Una Promise (promesa en castellano) es un objeto que representa la terminación o el fracaso de una 
+operación asíncrona. Dado que la mayoría de las personas consumen promises ya creadas, esta guía 
+explicará primero cómo consumirlas, y luego cómo crearlas.
+La palabra async nos va a permitir el uso de promesas. Al poner la palabra antes de la definición de un 
+método significa que esta obligado a regresar una promesa.
+La palabra reservada await solo puede utilizarse dentro de una función aysnc.
+
+
+
+Una promesa se crea con el constructor de la clase Promise(FUNCION); Dentro de los parentesis recibe como argumentos un puntero a función o una función anonima. Ambas funciones deben tener un parametro de resuelto y otro de rechazado, ambos parametros son callbacks.
+Ejemplo: const promise = new Promise((resolve,reject) => {});
+Una vez resuelta la función se devuelve el objeto creado como Promesa().
+
         8.    Shortcuts
 
 Pagina: https://medium.com/@ashley.karhoff1/emmet-shortcuts-to-quickly-generate-html-tags-and-css-classes-aeb04cd48aec

@@ -60,7 +60,7 @@ getUser2(2,(error, user) => {
     if(error) console.log(error);
     else getEmail(user, function(error, res){
         if(error){
-            return console.log(error);
+            console.log(error);
         } else {
             console.log(res);
         }
