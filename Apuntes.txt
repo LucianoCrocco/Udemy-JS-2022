@@ -506,7 +506,26 @@ La palabra reservada await solo puede utilizarse dentro de una función aysnc.
 
 Una promesa se crea con el constructor de la clase Promise(FUNCION); Dentro de los parentesis recibe como argumentos un puntero a función o una función anonima. Ambas funciones deben tener un parametro de resuelto y otro de rechazado, ambos parametros son callbacks.
 Ejemplo: const promise = new Promise((resolve,reject) => {});
-Una vez resuelta la función se devuelve el objeto creado como Promesa().
+Una vez resuelta la función se devuelve el objeto creado como Promesa(). Nos devuelve el estado fulfilled si pudo terminar su ejecución.
+Para leer el contenido de las promesas tenemos los metodos .then() si todo fue bien y .catch() si ocurrio algún error. Ambas funciones reciben punteros a funcion o funciones anonimas.
+Los catch funcionan para todos los then() que utilicemos. Los then() no hacen falta ser anidados.
+
+
+    4. Fetch - Introducción
+
+Es el reemplazo moderno del objeto XMLHTTPRequest.
+Fetch API
+Proporciona una interfaz JavaScript para acceder y manipular partes del canal HTTP, como peticiones y respuestas. Básicamente y muy por encima lo que hace es encapsular y crear una promesa con sus callbacks.
+También provee de un método global fetch() que proporciona una forma fácil y lógica de obtener recursos de forma asíncronica por la red.
+Esta basado en Promesas, por lo cual tiene un response y un reject internos.
+    Response tiene varios métodos: 
+    arrayBuffer(): Archivos binarios en bruto (mp3, pdf, jpg, etc). Se utiliza cuando se necesita manipular el contenido del archivo.
+    blob(): Archivos binarios en bruto (mp3, pdf, jpg, etc). Se utiliza cuando no se necesita manipular el contenido y se va a trabajar con el archivo directamente.
+    clone(): Crea un clon de un objeto de respuesta, idéntico en todos los sentidos, pero almacenado en una variable diferente.
+    formData: Se utiliza para leer los objetos FormData.
+    json(): Convierte los archivos json en un objeto de JavaScript.
+    text(): Se utiliza cuando queremos leer un archivo de texto. Siempre se codifica en UTF-8.
+
 
         8.    Shortcuts
 
