@@ -573,6 +573,7 @@ Ejemplo:
 
 Llego con el estandar EMAC Script 7. Es una implementación para hacer funciones asíncronas en JavaScript de forma nativa.
 
+
         8.    Shortcuts
 
 Pagina: https://medium.com/@ashley.karhoff1/emmet-shortcuts-to-quickly-generate-html-tags-and-css-classes-aeb04cd48aec
