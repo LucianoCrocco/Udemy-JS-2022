@@ -507,7 +507,7 @@ La palabra reservada await solo puede utilizarse dentro de una función aysnc.
 Una promesa se crea con el constructor de la clase Promise(FUNCION); Dentro de los parentesis recibe como argumentos un puntero a función o una función anonima. Ambas funciones deben tener un parametro de resuelto y otro de rechazado, ambos parametros son callbacks.
 Ejemplo: const promise = new Promise((resolve,reject) => {});
 Una vez resuelta la función se devuelve el objeto creado como Promesa(). Nos devuelve el estado fulfilled si pudo terminar su ejecución.
-Para leer el contenido de las promesas tenemos los metodos .then() si todo fue bien y .catch() si ocurrio algún error. Ambas funciones reciben punteros a funcion o funciones anonimas.
+Para leer el contenido de las promesas tenemos los metodos .then() si el retorno de la promesa fue resolve y .catch() si ocurrio algún error y retorno rejected. Ambas funciones reciben punteros a funcion o funciones anonimas.
 Los catch funcionan para todos los then() que utilicemos. Los then() no hacen falta ser anidados.
 
 
@@ -526,6 +526,52 @@ Esta basado en Promesas, por lo cual tiene un response y un reject internos.
     json(): Convierte los archivos json en un objeto de JavaScript.
     text(): Se utiliza cuando queremos leer un archivo de texto. Siempre se codifica en UTF-8.
 
+    Fetch por defecto al ponerle una URL trabaja con el metodo GET
+    fetch("RUTA").then(MANEJO SI NO HUBO ERROR).catch(MANEJO SI HUBO ERROR);
+    Ejemplo:
+    fetch("https://jsonplaceholder.typicode.com/users")
+        .then(res => res.ok ? Promise.resolve(res) : Promise.reject(res)) //Si resolvio procede a los then, sino hace el reject y pasa al catch.
+        .then(res => res.json())
+        .then(res => {
+            const list = document.getElementById("list");
+            const fragment = document.createDocumentFragment();
+            for(const userInfo of res){
+                const listElement = document.createElement("li");
+                listElement.textContent = `${userInfo.id} - ${userInfo.name}`;
+                fragment.appendChild(listElement);
+            }
+            list.appendChild(fragment);
+        })
+        .catch(error => console.log(error));
+
+    5. Fetch - Peticiones POST
+
+Fetch API
+Las peticiones POST sirven para enviar datos y hacer incersiones en una API o en una base de datos o en algun sitio.
+    Para hacer peticiones POST, fetch admite un segundo parámetro.
+    Ejemplo básico de peticion POST.
+    fetch(url,{
+        method: 'POST',
+        body: Los datos que enviamos. Si es un objeto hay que convertirlo con JSON.stringify(datos),
+        headers: {
+            Cabeceras de información sobre lo que estamos enviando.
+            https://developer.mozilla.org/es/docs/Web/HTTP/Headers
+        }
+    })
+
+    6. Fetch - Lectura de archivos
+
+Para leer archivos sin manipular su contenido debemos generar un Binary Long Object (blob) del asset que estamos adquiriendo. Lo convertimos en binario para que se puede leer en todos los dispositivos.
+Ese blob para que pueda ser visualizado lo vamos a convertir en una URL con la funcion URL.createObjectURL(blob asset).
+Ejemplo:
+    .then(asset => asset.blob())
+    .then(asset => {
+        document.getElementById("img").src = URL.createObjectURL(asset);
+    })
+
+    7. asyn/await
+
+Llego con el estandar EMAC Script 7. Es una implementación para hacer funciones asíncronas en JavaScript de forma nativa.
 
         8.    Shortcuts
 

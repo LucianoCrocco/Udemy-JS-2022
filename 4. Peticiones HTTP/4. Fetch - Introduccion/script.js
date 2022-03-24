@@ -12,12 +12,29 @@ Esta basado en Promesas, por lo cual tiene un response y un reject internos.
     json(): Convierte los archivos json en un objeto de JavaScript.
     text(): Se utiliza cuando queremos leer un archivo de texto. Siempre se codifica en UTF-8.
 
-Fetch por defecto al ponerle una URL trabaja con el metodo GET
+    Fetch por defecto al ponerle una URL trabaja con el metodo GET
+    fetch("RUTA").then(MANEJO SI NO HUBO ERROR).catch(MANEJO SI HUBO ERROR);
+    Ejemplo:
+    fetch("https://jsonplaceholder.typicode.com/users")
+        .then(res => res.ok ? Promise.resolve(res) : Promise.reject(res))
+        .then(res => res.json())
+        .then(res => {
+            const list = document.getElementById("list");
+            const fragment = document.createDocumentFragment();
+            for(const userInfo of res){
+                const listElement = document.createElement("li");
+                listElement.textContent = `${userInfo.id} - ${userInfo.name}`;
+                fragment.appendChild(listElement);
+            }
+            list.appendChild(fragment);
+        })
+        .catch(error => console.log(error));
  */ 
 
 const button = document.getElementById("button");
 
 button.addEventListener("click", () => {
+    //Comprobacion si el navegador soporta fetch
     /*if(window.fetch != undefined){ 
         console.log("Soporta fetch");
     } else {
@@ -25,7 +42,18 @@ button.addEventListener("click", () => {
     }*/
 
     fetch("https://jsonplaceholder.typicode.com/users")
-        .then(res => console.log(res))
+        .then(res => res.ok ? Promise.resolve(res) : Promise.reject(res)) //Si resolvio procede a los then, sino hace el reject y pasa al catch.
+        .then(res => res.json())
+        .then(res => {
+            const list = document.getElementById("list");
+            const fragment = document.createDocumentFragment();
+            for(const userInfo of res){
+                const listElement = document.createElement("li");
+                listElement.textContent = `${userInfo.id} - ${userInfo.name}`;
+                fragment.appendChild(listElement);
+            }
+            list.appendChild(fragment);
+        })
         .catch(error => console.log(error));
 
 });

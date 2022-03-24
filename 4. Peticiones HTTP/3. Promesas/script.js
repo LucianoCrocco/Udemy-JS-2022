@@ -4,7 +4,7 @@ const emails = [{id:1,email:"Pedro@mail.com"}, {id:2,email:"Laura@mail.com"}];
 
 const getUser = (id) => {
     const user = users.find(user => user.id === id);
-    const promise = new Promise((resolve,reject) => {
+    const promise = new Promise((resolve,reject) => {//Por un tema del scope user es una "varibale global" con respecto a la funcion anonima local. 
         if(user == undefined){
             reject(`Not exist a user with ID ${id}`);
         } else {
@@ -14,7 +14,7 @@ const getUser = (id) => {
     return promise;
 }
 
-const getEmail = (user, cb) => {
+const getEmail = (user) => {
     const email = emails.find(email => email.id === user.id);
 
         return promise = new Promise((resolve,reject) => {
@@ -38,3 +38,5 @@ getUser(5).then(data => console.log(data)).catch(error => console.log(error));
 */
 
 getUser(2).then(user => getEmail(user)).then(res => console.log(res)).catch(error => console.log(error));
+getUser(3).then(user => getEmail(user)).then(res => console.log(res)).catch(error => console.log(error));
+getUser(4).then(user => console.log(user)).catch(error => console.log(error));
