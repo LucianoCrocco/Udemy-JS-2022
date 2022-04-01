@@ -420,6 +420,10 @@ Timers - Los timers nos permiten establecer que una función se ejecuta despues 
 
 AJAX, acrónimo de Asynchronous JavaScript And XML, es una técnica de desarrollo web para crear aplicaciones web asíncronas. Estas aplicaciones se ejecutan en el cliente, es decir, en el navegador de los usuarios mientras se mantiene la comunicación asíncrona con el servidor en segundo plano.
 
+Hay que leer la documentacion de la API para saber como el backend implementa los metodos HTTP y saber de que manera interactuar con el servidor para recibir, enviar, actualizar, etc. información.
+Por ejemplo: https://jsonplaceholder.typicode.com/guide/ -> Sabemos que con el metodo GET vamos a recibir informacion, aplicando el POST de la manera que indica la documentación vamos a enviar información a un servidor y lo va a cargar, etc.
+
+
                 FOTO ASYNC VS SYNC
 
     Pequeña definición de AJAX
@@ -441,7 +445,6 @@ En este curso no veremos AJAX con JQuery al ser una libreria pesada y obsoleta. 
 
 Normalmente las peticiones a los servidores se hacen a través de PHP, es la forma más común. Hoy por hoy node esta comiendo parte del mercado, sin embargo PHP sigue siendo la principal.
 Vamos a utilizar la API https://jsonplaceholder.typicode.com para realizar peticiones AJAX, ademas de montar un pequeño servidor PHP (WampServer). 
-
 
     1. Objeto XMLHTTPRequest
 
@@ -473,8 +476,6 @@ Ejemplo parseando del JSON recibido solamente el ID y nombre:
             list.appendChild(listItem);
         }
     }); 
-
-
 
     2. Callbacks
 
@@ -509,7 +510,6 @@ Ejemplo: const promise = new Promise((resolve,reject) => {});
 Una vez resuelta la función se devuelve el objeto creado como Promesa(). Nos devuelve el estado fulfilled si pudo terminar su ejecución.
 Para leer el contenido de las promesas tenemos los metodos .then() si el retorno de la promesa fue resolve y .catch() si ocurrio algún error y retorno rejected. Ambas funciones reciben punteros a funcion o funciones anonimas.
 Los catch funcionan para todos los then() que utilicemos. Los then() no hacen falta ser anidados.
-
 
     4. Fetch - Introducción
 
@@ -562,16 +562,99 @@ Las peticiones POST sirven para enviar datos y hacer incersiones en una API o en
     6. Fetch - Lectura de archivos
 
 Para leer archivos sin manipular su contenido debemos generar un Binary Long Object (blob) del asset que estamos adquiriendo. Lo convertimos en binario para que se puede leer en todos los dispositivos.
-Ese blob para que pueda ser visualizado lo vamos a convertir en una URL con la funcion URL.createObjectURL(blob asset).
+Ese blob para que pueda ser visualizado lo vamos a convertir en un objeto URL con la funcion URL.createObjectURL(blob asset).
 Ejemplo:
     .then(asset => asset.blob())
     .then(asset => {
         document.getElementById("img").src = URL.createObjectURL(asset);
     })
 
-    7. asyn/await
+    7. async/await
 
 Llego con el estandar EMAC Script 7. Es una implementación para hacer funciones asíncronas en JavaScript de forma nativa.
+Las funciones asincroncas devuelven promesas. Podemos declarar dentro una Promise y JS va a detectar que tenemos una promesa. Evitando así que de devuelve una promesa de una promesa. 
+async crea una función asincrona, esta funcion asincrona no va a bloquear el event loop/stack y cuando termine se va a mostrar el codigo de la funcion async. Si tenemos que recibir informacion que puede llegar a tardar varios segundos es importante aplicar este concepto para que la página no se cuelge.
+Si una función depende de otra asincrona ésta función debera ser asincrona también (ya que al depender de otra asincronia no se ejecuta en secuencia) y al llamar a la función asincrona original ponemos un await delante de la función para indicarle que espere a que termine el proceso y después continue con el código restante. 
+Se podría decir que await bloquea el en el stack mi funcion hasta que se resuelva la otra funcion del stack. Si no bloqueramos la funcion que llama a mi función principal asincrona es probable que nos devuelva un object vacio en vez de la información que recaba el hilo asincronico.
+await no puede funcionar si no estamos dentro de una función async.
+
+    Ejemplo promesa explicita:
+
+const getName = async () => {
+    return new Promise((resolve, rejected) => {
+        setTimeout(() => {
+            resolve("Luciano");
+        }, 1000);
+    })
+}
+
+const saludar = async() => {
+    const nombre = await getName();
+    return `Hola ${nombre}`;
+}
+
+saludar().then(res=>console.log(res)).catch(error => console.error(error));
+
+    Ejemplo promesa implicita
+
+const users = [{id:1,name:"Pedro"}, {id:2,name:"Laura"}, {id:3,name:"Carlos"}];
+const emails = [{id:1,email:"Pedro@mail.com"}, {id:2,email:"Laura@mail.com"}];
+
+const getUser = async (id) => {
+    const user = users.find(user => user.id === id);
+    
+    if(user == undefined){
+        throw new Error(`Not exist a user with ID ${id}`);
+    }
+    
+    return user;
+    
+}
+
+const getEmail = async (user) => {
+    const email = emails.find(email => email.id === user.id);
+    
+    if(email == undefined){
+        throw(`Not exist a email with ID ${user.id}`);
+    }
+
+    return ({
+        id: user.id,
+        name: user.name,
+        email: email.email
+    });
+}
+
+const getInfo = async(id) =>{
+    try{
+        const user = await getUser(id);
+        const res = await getEmail(user);
+        return `${res.name} el mail es ${res.email}`
+    }catch(error){
+        console.log(error);
+    }
+
+}
+
+getInfo(1).then(res => console.log(res));
+O si no utilizamos try catch.
+getUser(2).then(res=> getEmail(res)).then(res => console.log(res)).catch(error=>console.log(error));
+
+    8. Libreria AXIOS - GET/POST
+
+Documentacion: https://github.com/axios/axios.git
+Axios es una libreria basada en promesas tanto para el cliente como para el servidor que utiliza JSON. Es una libreria que convierte automaticamente a json las peticiones y reemplaza a jQuery, fetch, entre otras cosas.
+
+
+
+        5. Formularios y expresiones regulares
+
+    1. Formularios
+
+
+    2. Introduccion a expresiones regulares
+
+
 
 
         8.    Shortcuts

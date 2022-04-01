@@ -28,7 +28,7 @@ button.addEventListener("click", () => {
     method:'POST',
     body:JSON.stringify(newPost),
     headers:{
-        "Content-type": "application/json"
+        "Content-type": "application/json; charset=UTF-8"
     }
     })
     .then(res => res.json())
