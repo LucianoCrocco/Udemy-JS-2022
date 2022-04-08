@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+  background-color: #2f3238;
+  color: #ccc;
+}
+
+.video {
+  max-width: 100%;
+  max-height: 100%;
+}
